@@ -1,0 +1,27 @@
+---
+import { getCollection } from "astro:content";
+
+const posts = await getCollection("blog");
+const publishedPosts = posts.filter((p) => !p.data.draft);
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+  <body class="prose mx-auto py-8">
+    <h1>Blog</h1>
+
+    <ul>
+      {
+        publishedPosts.map((post) => (
+          <li>
+            <a href={`/blog/${post.slug}`}>{post.data.title}</a>
+            <p>{post.data.description}</p>
+          </li>
+        ))
+      }
+    </ul>
+  </body>
+</html>
