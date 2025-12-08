@@ -1,6 +1,8 @@
 @import "tailwindcss";
 @plugin "daisyui" {
-  themes: light --default, dark --prefersdark, corporate;
+  themes: light --default, dark --prefersdark;
+  /* Add preset themes from https://daisyui.com/docs/themes/ */
+  /* Make custom themes using https://daisyui.com/theme-generator/ */
 }
 
 

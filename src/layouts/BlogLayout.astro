@@ -1,0 +1,19 @@
+---
+import BaseLayout from "./BaseLayout.astro";
+
+const { post } =
+  Astro.props;
+
+const { title, description, author, pubDate, updatedDate, image } = post.data;
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  author={author}
+  setOGTypeArticle={true}
+>
+  <article>
+    <slot />
+  </article>
+</BaseLayout>
