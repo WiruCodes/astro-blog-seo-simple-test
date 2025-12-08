@@ -4,7 +4,7 @@ export const siteConfig: SiteConfig = {
   siteTitle: "Astro Blog",
   siteDescription: "A blog about Astro, development, and experiments.",
 
-  siteUrl: "https://yourdomain.com",
+  siteUrl: "https://your-site.com/",
 
   siteAuthor: {
     name: "Wiru",

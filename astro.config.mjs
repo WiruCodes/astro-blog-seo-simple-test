@@ -10,7 +10,7 @@ import tailwindcss from "@tailwindcss/vite";
 
 export default defineConfig({
   // REQUIRED for sitemap + SEO
-  site: "https://your-site.com",
+  site: "https://your-site.com/",
 
   integrations: [
     vue(),

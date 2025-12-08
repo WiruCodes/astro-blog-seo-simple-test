@@ -18,12 +18,33 @@ const {
   description,
   author,
   setOGTypeArticle = false,
+  jsonLd,
 } = Astro.props;
+
+// Set schema to jsonLd for articles if present, otherwise use jsonLd for websites
+let pageJsonLd;
+if(jsonLd) {
+  pageJsonLd = jsonLd;
+} else {
+  pageJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": siteTitle,
+    "url": Astro.site,
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": `${Astro.site}search?q={search_term_string}`,
+      "query-input": "required name=search_term_string"
+    }
+  };
+}
 
 // Set title to siteTitle(default) if title is not passed as a prop
 const pageTitle: string = title ? title : siteTitle;
 // Set description to siteDescription(default) if description is not passed as a prop and title if description is undefined
 const pageDesc: string = description || title || siteDescription;
+// Set author to siteAuthor(default) if author is not passed as a prop
+const pageAuthor: string = author ? author : siteAuthor.name;
 ---
 
 <html lang={siteLang || "en"} data-theme={siteTheme || "light"}>
@@ -32,7 +53,7 @@ const pageDesc: string = description || title || siteDescription;
 
     <meta charset="UTF-8" />
     <meta name="description" content={pageDesc} />
-    <meta name="author" content={author || siteAuthor.name} />
+    <meta name="author" content={pageAuthor} />
 
     <meta property="og:site_name" content={pageTitle} />
     <meta property="og:url" content={Astro.url} />
@@ -53,6 +74,9 @@ const pageDesc: string = description || title || siteDescription;
 
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
+
+    <script type="application/ld+json" set:html={JSON.stringify(pageJsonLd)}></script>
+
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   </head>
 
