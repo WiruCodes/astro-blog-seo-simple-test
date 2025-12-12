@@ -2,9 +2,9 @@
 import BaseLayout from "./BaseLayout.astro";
 
 const { post } =
-  Astro.props;
+Astro.props;
 
-const { title, description, author, pubDate, updatedDate, image } = post.data;
+const { title, description, author, pubDate, updatedDate, heroImage } = post.data;
 
 const jsonLd = {
   "@context": "https://schema.org",
@@ -17,7 +17,7 @@ const jsonLd = {
   },
   "datePublished": pubDate.toISOString(),
   "dateModified": updatedDate.toISOString(),
-  "image": `${Astro.site}${image.src.replace(/^\/+/, '')}`,
+  "image": heroImage.image.src,
   "url": Astro.url.href
 };
 ---
@@ -28,6 +28,7 @@ const jsonLd = {
   author={author}
   setOGTypeArticle={true}
   jsonLd={jsonLd}
+  heroImage={heroImage}
 >
   <article>
     <slot />

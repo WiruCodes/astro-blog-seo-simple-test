@@ -1,4 +1,5 @@
 import type { SiteConfig } from "../types/site-config";
+import defaultImage from "../../public/default-image.jpg";
 
 export const siteConfig: SiteConfig = {
   siteTitle: "Astro Blog",
@@ -26,5 +27,9 @@ export const siteConfig: SiteConfig = {
   ],
 
   siteLang: "en",
-  siteTheme: "dark", // Theme should be set in global.css for @plugin "daisyui"
+  siteTheme: "dark", // theme should be set in global.css for @plugin "daisyui"
+  siteDefaultHeroImage: {
+    image: defaultImage,
+    alt: "Alt message for default hero image."
+  }
 };

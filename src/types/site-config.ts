@@ -1,3 +1,5 @@
+import type { ImageMetadata } from "astro";
+
 export interface SiteConfig {
   siteTitle: string;
   siteDescription: string;
@@ -13,5 +15,9 @@ export interface SiteConfig {
   siteSocial?: { name: string; href: string }[];
   siteNav?: { name: string; href: string }[];
   siteLang?: string;
-  siteTheme?: string; // Theme should be set in global.css for @plugin "daisyui"
+  siteTheme?: string; // theme should be set in global.css for @plugin "daisyui"
+  siteDefaultHeroImage: {
+    image: ImageMetadata;
+    alt: string;
+  }
 }

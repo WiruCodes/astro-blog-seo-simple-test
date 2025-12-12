@@ -4,16 +4,21 @@ description: "Comprehensive hub for SEO topics and links to deep dives."
 pubDate: 2025-01-10
 updatedDate: 2025-02-15
 author: "Language Coder"
-image: {
-  src: "/assets/seo-keywords.png",
-  alt: "/assets/seo-keywords.png"
+heroImage: {
+  image: "./seo-0.jpg",
+  alt: "This is a test alt for the hero image.",
 }
-draft: false
----
 
+---
+import { Image } from "astro:assets";
+import image0 from "./seo-0.jpg";
+
+# path: blog/seo
 # SEO - Pillar Page
 
 This pillar is the central hub for SEO resources. Below are deep-dive articles.
 
 - [How to do keyword research](/blog/seo/how-to-keywords)
 - (add more satellites here)
+
+<Image src={image0} alt={frontmatter.heroImage.alt} />

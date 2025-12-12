@@ -11,6 +11,7 @@ const {
   siteNav,
   siteLang,
   siteTheme,
+  siteDefaultHeroImage
 } = siteConfig;
 
 const {
@@ -19,9 +20,10 @@ const {
   author,
   setOGTypeArticle = false,
   jsonLd,
+  heroImage
 } = Astro.props;
 
-// Set schema to jsonLd for articles if present, otherwise use jsonLd for websites
+// set schema to jsonLd for articles if present, otherwise use jsonLd for websites
 let pageJsonLd;
 if(jsonLd) {
   pageJsonLd = jsonLd;
@@ -31,6 +33,7 @@ if(jsonLd) {
     "@type": "WebSite",
     "name": siteTitle,
     "url": Astro.site,
+    "image": siteDefaultHeroImage.image.src,
     "potentialAction": {
       "@type": "SearchAction",
       "target": `${Astro.site}search?q={search_term_string}`,
@@ -39,12 +42,15 @@ if(jsonLd) {
   };
 }
 
-// Set title to siteTitle(default) if title is not passed as a prop
+// set title to siteTitle(default) if title is not passed as a prop
 const pageTitle: string = title ? title : siteTitle;
-// Set description to siteDescription(default) if description is not passed as a prop and title if description is undefined
+// set description to siteDescription(default) if description is not passed as a prop and title if description is undefined
 const pageDesc: string = description || title || siteDescription;
-// Set author to siteAuthor(default) if author is not passed as a prop
+// set author to siteAuthor(default) if author is not passed as a prop
 const pageAuthor: string = author ? author : siteAuthor.name;
+// set heroImage src and alt to siteDefaultHeroImage(default) if heroImage is not passed as a prop
+const pageHeroImageSrc: string = heroImage ? heroImage.image.src : siteDefaultHeroImage.image.src;
+const pageHeroImageAlt: string = heroImage ? heroImage.alt : siteDefaultHeroImage.alt;
 ---
 
 <html lang={siteLang || "en"} data-theme={siteTheme || "light"}>
@@ -59,6 +65,8 @@ const pageAuthor: string = author ? author : siteAuthor.name;
     <meta property="og:url" content={Astro.url} />
     <meta property="og:title" content={pageTitle} />
     <meta property="og:description" content={pageDesc} />
+    <meta property="og:image" content={pageHeroImageSrc} />
+    <meta property="og:image:alt" content={pageHeroImageAlt} />
     {
       setOGTypeArticle ? (
         <meta property="og:type" content="article" />
@@ -71,6 +79,7 @@ const pageAuthor: string = author ? author : siteAuthor.name;
     <meta property="twitter:url" content={Astro.url} />
     <meta name="twitter:title" content={pageTitle} />
     <meta name="twitter:description" content={pageDesc} />
+    <meta name="twitter:image" content={pageHeroImageSrc} />
 
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
@@ -86,7 +95,6 @@ const pageAuthor: string = author ? author : siteAuthor.name;
     <main class="max-w-3xl mx-auto p-4">
       <slot />
     </main>
-
     <footer class="p-4 border-t mt-8">Footer</footer>
   </body>
 </html>
