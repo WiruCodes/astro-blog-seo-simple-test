@@ -1,5 +1,5 @@
 import type { ImageMetadata } from "astro";
-import defaultImage from "/default-image.jpg";
+import defaultImage from "../../public/default-image.jpg";
 import { siteConfig } from "../config/site-config";
 
 export type PromoProduct = {
@@ -47,7 +47,7 @@ export const promos: Record<string, PromoMerchant> = {
   },
   testMerchant: {
     testKeyboard: {
-      url: "https://example.com/affiliate-keyboard",
+      url: "https://www.google.com/search?q=keyboards",
       name: "Test Mechanical Keyboard",
       promoImage: {
         image: defaultImage,
@@ -55,11 +55,11 @@ export const promos: Record<string, PromoMerchant> = {
       },
       description:
         "A solid entry-level mechanical keyboard for typing and casual gaming.",
-      cta: "Check price",
+      cta: "Buy in Store Name",
       type: "affiliate",
     },
     testHeadphones: {
-      url: "https://example.com/affiliate-headphones",
+      url: "https://www.google.com/search?q=headsets",
       name: "Test Gaming Headphones",
       promoImage: {
         image: defaultImage,

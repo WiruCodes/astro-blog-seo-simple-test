@@ -1,5 +1,5 @@
 import type { ImageMetadata } from "astro";
-import defaultImage from "../../public/default-image.jpg";
+import defaultImage from "/public/default-image.jpg";
 
 interface SiteConfig {
   siteTitle: string;

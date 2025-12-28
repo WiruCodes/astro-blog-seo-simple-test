@@ -6,16 +6,17 @@ description: "Comprehensive hub for SEO topics and links to deep dives."
 pubDate: 2025-01-10
 updatedDate: 2025-02-15
 author: "Language Coder"
-heroImage: {
-  image: "./seo-0.jpg",
-  alt: "This is a test alt for the hero image.",
-}
-
+heroImage:
+  { image: "./seo-0.jpg", alt: "This is a test alt for the hero image." }
 ---
+
+import PromoCard from "@/components/blog/PromoCard.astro";
+import { promos } from "@/data/promos.ts";
 import { Image } from "astro:assets";
 import image0 from "./seo-0.jpg";
 
 # path: blog/seo
+
 # SEO - Pillar Page
 
 This pillar is the central hub for SEO resources. Below are deep-dive articles.
@@ -24,3 +25,17 @@ This pillar is the central hub for SEO resources. Below are deep-dive articles.
 - (add more satellites here)
 
 <Image src={image0} alt={frontmatter.heroImage.alt} />
+
+## Sample Promo Card keyboard
+<PromoCard
+  promo={promos.testMerchant.testKeyboard}
+  pros={["test pro 1", "test pro 2", "test pro 3"]}
+  cons={["test con 1", "test con 2", "test con 3"]}
+/>
+
+## Sample Promo Card headphones
+<PromoCard
+  promo={promos.testMerchant.testHeadphones}
+  pros={["test pro 1", "test pro 2", "test pro 3"]}
+  cons={["test con 1", "test con 2", "test con 3"]}
+/>

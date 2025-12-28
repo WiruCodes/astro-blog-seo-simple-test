@@ -1,0 +1,109 @@
+---
+import { Image } from "astro:assets";
+const { pros = [], cons = [] } = Astro.props;
+const { url, name, promoImage, description, cta } = Astro.props.promo;
+---
+
+<div class="promo-card">
+  <!-- main card details -->
+  <div class="card bg-base-100 w-auto">
+    <div class="bg-primary border overflow-hidden">
+      <h3
+        class="card-title justify-center text-center text-white! px-8 py-2 md:py-4"
+      >
+        {name}
+      </h3>
+      <figure>
+        <Image src={promoImage.image} alt={promoImage.alt} />
+      </figure>
+    </div>
+    <div class="card-body">
+      <p>{description}</p>
+      <div class="card-actions">
+        <a
+          href={url}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn bg-red-700 no-underline! w-full text-white! font-bold"
+        >
+          {cta}
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="3"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="lucide lucide-chevron-right-icon lucide-chevron-right"
+            ><path d="m9 18 6-6-6-6"></path></svg
+          >
+        </a>
+      </div>
+    </div>
+  </div>
+  <!-- pros and cons section -->
+  {
+    pros.length !== 0 && cons.length !== 0 && (
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div class="card border">
+          <div class="card-body">
+            <h4 class="card-title">PROS</h4>
+            <ul class="pros">
+              {pros.map((pro: string) => (
+                <li class="list-none flex">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="w-4 mr-2 lucide lucide-circle-plus-icon lucide-circle-plus"
+                  >
+                    <circle cx="12" cy="12" r="10" />
+                    <path d="M8 12h8" />
+                    <path d="M12 8v8" />
+                  </svg>
+                  {pro}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+        <div class="card border">
+          <div class="card-body">
+            <h4 class="card-title">CONS</h4>
+            <ul class="cons">
+              {cons.map((con: string) => (
+                <li class="list-none flex">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="w-4 mr-2 lucide lucide-circle-minus-icon lucide-circle-minus"
+                  >
+                    <circle cx="12" cy="12" r="10" />
+                    <path d="M8 12h8" />
+                  </svg>
+                  {con}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </div>
+    )
+  }
+</div>
