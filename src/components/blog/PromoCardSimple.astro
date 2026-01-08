@@ -1,0 +1,37 @@
+---
+import { Image } from "astro:assets";
+const { url, name, sectionSlug, trait, promoImage, cta } = Astro.props.promo;
+---
+
+<div
+  class="card card-side bg-base-100 shadow-sm w-auto justify-between py-4 h-fit flex-row sm:items-center rounded-none overflow-hidden"
+>
+  <figure class="h-20 min-w-fit">
+    <Image
+      src={promoImage.image}
+      alt={promoImage.alt}
+      class="h-full! aspect-40/21"
+    />
+  </figure>
+  <div class="card-body flex-col sm:flex-row justify-between py-0">
+    <div class="card-text">
+      <p class="m-0! font-semibold text-sm! uppercase">{trait}</p>
+      <p class="card-title m-0! mt-2! mb-2! font-bold uppercase">{name}</p>
+      <a
+        href=`#${sectionSlug}`
+        class="text-primary! cursor-pointer underline hover:no-underline! font-semibold uppercase"
+        >READ MORE</a
+      >
+    </div>
+    <div class="card-actions min-w-fit items-center sm:ml-8">
+      <a
+        href={url}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="btn btn-primary text-white! no-underline! min-w-50 px-4 sm:px-8 py-6 uppercase"
+      >
+        {cta}
+      </a>
+    </div>
+  </div>
+</div>

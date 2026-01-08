@@ -49,7 +49,7 @@ export const siteConfig: SiteConfig = {
   ],
 
   siteLang: "en",
-  siteTheme: "dark", // theme should be set in global.css for @plugin "daisyui"
+  siteTheme: "business", // theme should be set in global.css for @plugin "daisyui"
   siteDefaultHeroImage: {
     image: defaultImage,
     alt: "Alt message for default hero image."

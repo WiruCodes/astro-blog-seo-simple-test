@@ -5,6 +5,8 @@ import { siteConfig } from "../config/site-config";
 export type PromoProduct = {
   url: string; // where it goes (affiliate or internal)
   name: string; // product / game name
+  sectionSlug: string;
+  trait: string;
   promoImage: {
     image: ImageMetadata;
     alt: string;
@@ -23,6 +25,8 @@ export const promos: Record<string, PromoMerchant> = {
     default: {
       url: siteConfig.siteUrl + "/blog",
       name: "Test Blog Posts",
+      sectionSlug: "test-blog-posts",
+      trait: "",
       promoImage: {
         image: defaultImage,
         alt: "Blog Posts",
@@ -35,6 +39,8 @@ export const promos: Record<string, PromoMerchant> = {
     homeGame: {
       url: siteConfig.siteUrl,
       name: "Kanji Sprint",
+      sectionSlug: "kanji-sprint",
+      trait: "",
       promoImage: {
         image: defaultImage,
         alt: "Anime-style kanji quiz game interface",
@@ -49,6 +55,8 @@ export const promos: Record<string, PromoMerchant> = {
     testKeyboard: {
       url: "https://www.google.com/search?q=keyboards",
       name: "Test Mechanical Keyboard",
+      sectionSlug: "test-mechanical-keyboard",
+      trait: "Best Ergonomics",
       promoImage: {
         image: defaultImage,
         alt: "Mechanical keyboard with compact layout",
@@ -61,6 +69,8 @@ export const promos: Record<string, PromoMerchant> = {
     testHeadphones: {
       url: "https://www.google.com/search?q=headsets",
       name: "Test Gaming Headphones",
+      sectionSlug: "test-gaming-headphones",
+      trait: "Best Comfort",
       promoImage: {
         image: defaultImage,
         alt: "Over-ear gaming headphones with microphone",
@@ -68,6 +78,20 @@ export const promos: Record<string, PromoMerchant> = {
       description:
         "Comfortable over-ear headphones with clear audio and detachable mic.",
       cta: "View on store",
+      type: "affiliate",
+    },
+    testMakeup: {
+      url: "https://www.google.com/search?q=makeup",
+      name: "Test Makeup",
+      sectionSlug: "test-makeup",
+      trait: "Best Affordable Pick",
+      promoImage: {
+        image: defaultImage,
+        alt: "This is a test makeup image.",
+      },
+      description:
+        "Make up item sale.",
+      cta: "BUY ME",
       type: "affiliate",
     },
   },

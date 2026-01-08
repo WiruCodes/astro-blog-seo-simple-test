@@ -1,7 +1,7 @@
 ---
 import { Image } from "astro:assets";
 const { pros = [], cons = [] } = Astro.props;
-const { url, name, promoImage, description, cta } = Astro.props.promo;
+const { url, name, trait, promoImage, description, cta } = Astro.props.promo;
 ---
 
 <div class="promo-card">
@@ -9,9 +9,9 @@ const { url, name, promoImage, description, cta } = Astro.props.promo;
   <div class="card bg-base-100 w-auto">
     <div class="bg-primary border overflow-hidden">
       <h3
-        class="card-title justify-center text-center text-white! px-8 py-2 md:py-4"
+        class="card-title uppercase justify-center text-center px-8 py-2 md:py-4"
       >
-        {name}
+        {name}{trait.replace(/\s/g, "").length > 0 && ` - ${trait}`}
       </h3>
       <figure>
         <Image src={promoImage.image} alt={promoImage.alt} />
@@ -24,7 +24,7 @@ const { url, name, promoImage, description, cta } = Astro.props.promo;
           href={url}
           target="_blank"
           rel="noopener noreferrer"
-          class="btn bg-red-700 no-underline! w-full text-white! font-bold"
+          class="btn bg-red-700 uppercase no-underline! w-full text-white! font-bold"
         >
           {cta}
           <svg

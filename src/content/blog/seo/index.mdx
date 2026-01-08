@@ -10,6 +10,9 @@ heroImage:
   { image: "./seo-0.jpg", alt: "This is a test alt for the hero image." }
 ---
 
+import slugify from "@/scripts/slugify.ts";
+import PromoCardSimple from "@/components/blog/PromoCardSimple.astro";
+import PromoCardSimpleList from "@/components/blog/PromoCardSimpleList.astro";
 import PromoCard from "@/components/blog/PromoCard.astro";
 import { promos } from "@/data/promos.ts";
 import { Image } from "astro:assets";
@@ -26,7 +29,36 @@ This pillar is the central hub for SEO resources. Below are deep-dive articles.
 
 <Image src={image0} alt={frontmatter.heroImage.alt} />
 
-## Sample Promo Card keyboard
+## Sample Promo Card Simple List
+
+<PromoCardSimpleList
+  promoListTitle="This Is The Promo List Title"
+  promosList={[
+    promos.testMerchant.testKeyboard,
+    promos.testMerchant.testHeadphones,
+    promos.testMerchant.testMakeup,
+    promos.testMerchant.testKeyboard,
+    promos.testMerchant.testHeadphones,
+    promos.testMerchant.testMakeup,
+    promos.internal.homeGame,
+  ]}
+/>
+
+## Sample Promo Card Simple
+
+<PromoCardSimple promo={promos.testMerchant.testKeyboard} />
+
+## Sample Promo Card Default
+
+<PromoCard
+  promo={promos.internal.default}
+  pros={["test pro 1", "test pro 2", "test pro 3"]}
+  cons={["test con 1", "test con 2", "test con 3"]}
+/>
+
+<h2 id={promos.testMerchant.testKeyboard.sectionSlug}>
+  Sample Promo Card keyboard
+</h2>
 <PromoCard
   promo={promos.testMerchant.testKeyboard}
   pros={["test pro 1", "test pro 2", "test pro 3"]}
@@ -34,8 +66,17 @@ This pillar is the central hub for SEO resources. Below are deep-dive articles.
 />
 
 ## Sample Promo Card headphones
+
 <PromoCard
   promo={promos.testMerchant.testHeadphones}
+  pros={["test pro 1", "test pro 2", "test pro 3"]}
+  cons={["test con 1", "test con 2", "test con 3"]}
+/>
+
+## Sample Promo Card makeup
+
+<PromoCard
+  promo={promos.testMerchant.testMakeup}
   pros={["test pro 1", "test pro 2", "test pro 3"]}
   cons={["test con 1", "test con 2", "test con 3"]}
 />
