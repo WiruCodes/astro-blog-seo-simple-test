@@ -1,24 +1,24 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
 
-const { post } =
-Astro.props;
+const { post } = Astro.props;
 
-const { title, description, author, pubDate, updatedDate, heroImage } = post.data;
+const { title, description, author, pubDate, updatedDate, heroImage } =
+  post.data;
 
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "Article",
-  "headline": title,
-  "description": description,
-  "author": {
+  headline: title,
+  description: description,
+  author: {
     "@type": "Person",
-    "name": author
+    name: author,
   },
-  "datePublished": pubDate.toISOString(),
-  "dateModified": updatedDate.toISOString(),
-  "image": heroImage.image.src,
-  "url": Astro.url.href
+  datePublished: pubDate.toISOString(),
+  dateModified: updatedDate.toISOString(),
+  image: heroImage.image.src,
+  url: Astro.url.href,
 };
 ---
 
@@ -30,7 +30,16 @@ const jsonLd = {
   jsonLd={jsonLd}
   heroImage={heroImage}
 >
-  <article>
+<article>
+    <div class="affiliate-txt bg-neutral text-center py-3 px-1">
+      <p class="text-sm m-0">
+        Our editors carefully select every product we recommend. We may earn a
+        commission from these links. <a
+          href="/about"
+          class="underline hover:no-underline text-white">Learn more</a
+        >
+      </p>
+    </div>
     <slot />
   </article>
 </BaseLayout>

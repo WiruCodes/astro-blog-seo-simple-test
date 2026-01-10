@@ -6,8 +6,8 @@ const { promosList, promoListTitle } = Astro.props;
 const visible = 5;
 ---
 
-<div id="promo-list-title" class="border-y text-center">
-  <h2 class="uppercase m-0! py-4 px-12">{promoListTitle}</h2>
+<div class="promo-list-title border-y text-center">
+  <h2 class="uppercase m-0 py-4 px-12">{promoListTitle}</h2>
 </div>
 <div id="promo-list">
   {
@@ -20,8 +20,8 @@ const visible = 5;
     })
   }
 </div>
-<div id="show-more-container" class="mt-2">
-  <a id="show-more" class="text-primary! cursor-pointer font-semibold uppercase"
+<div class="show-more-container mt-2">
+  <a id="show-more" class="text-primary cursor-pointer font-semibold uppercase"
     >SHOW MORE</a
   >
 </div>
@@ -29,7 +29,6 @@ const visible = 5;
 <script define:vars={{ visible }}>
   const showMoreButton = document.getElementById("show-more");
   const promoListItems = document.querySelectorAll("#promo-list > div");
-  const showMoreText = document.getElementById("show-more");
 
   showMoreButton?.addEventListener("click", () => {
     promoListItems.forEach((promoListItem, idx) => {
@@ -37,7 +36,7 @@ const visible = 5;
         promoListItem.classList.toggle("hidden");
       }
     });
-    showMoreText.textContent =
-      showMoreText.textContent == "SHOW MORE" ? "SHOW LESS" : "SHOW MORE";
+    showMoreButton.textContent =
+      showMoreButton.textContent == "SHOW MORE" ? "SHOW LESS" : "SHOW MORE";
   });
 </script>

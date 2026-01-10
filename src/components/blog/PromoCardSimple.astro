@@ -10,16 +10,16 @@ const { url, name, sectionSlug, trait, promoImage, cta } = Astro.props.promo;
     <Image
       src={promoImage.image}
       alt={promoImage.alt}
-      class="h-full! aspect-40/21"
+      class="h-full aspect-40/21"
     />
   </figure>
   <div class="card-body flex-col sm:flex-row justify-between py-0">
     <div class="card-text">
-      <p class="m-0! font-semibold text-sm! uppercase">{trait}</p>
-      <p class="card-title m-0! mt-2! mb-2! font-bold uppercase">{name}</p>
+      <p class="m-0 font-semibold text-sm uppercase">{trait}</p>
+      <p class="card-title m-0 mt-2 mb-2 font-bold uppercase">{name}</p>
       <a
         href=`#${sectionSlug}`
-        class="text-primary! cursor-pointer underline hover:no-underline! font-semibold uppercase"
+        class="text-primary cursor-pointer underline hover:no-underline font-semibold uppercase"
         >READ MORE</a
       >
     </div>
@@ -28,7 +28,7 @@ const { url, name, sectionSlug, trait, promoImage, cta } = Astro.props.promo;
         href={url}
         target="_blank"
         rel="noopener noreferrer"
-        class="btn btn-primary text-white! no-underline! min-w-50 px-4 sm:px-8 py-6 uppercase"
+        class="btn btn-primary text-white no-underline min-w-50 px-4 sm:px-8 py-6 uppercase"
       >
         {cta}
       </a>
